@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 import { CheckCircleIcon, LinkIcon } from "@chakra-ui/icons";
@@ -16,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { motion, AnimateSharedLayout } from "framer-motion";
-import attentionPic from "../public/images/attention.png";
+import attentionPic from "../src/images/attention.png";
 
 import { sitePages } from "../public/site-info/pages";
 
@@ -109,7 +108,7 @@ export default function Home() {
                       initial="hidden"
                       animate="visible"
                     >
-                      <Image
+                      <img
                         src={attentionPic}
                         alt="pointer"
                         width={45}
@@ -128,7 +127,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <span className={styles.logo}>
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
         </span>
       </footer>
     </div>
