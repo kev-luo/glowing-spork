@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 import { CheckCircleIcon, LinkIcon } from "@chakra-ui/icons";
@@ -108,7 +109,7 @@ export default function Home() {
                       initial="hidden"
                       animate="visible"
                     >
-                      <img
+                      <Image
                         src={attentionPic}
                         alt="pointer"
                         width={45}
@@ -127,7 +128,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <span className={styles.logo}>
-          <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
         </span>
       </footer>
     </div>
