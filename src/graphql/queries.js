@@ -1,68 +1,15 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getBlog = /* GraphQL */ `
-  query GetBlog($id: ID!) {
-    getBlog(id: $id) {
-      id
-      name
-      username
-      createdAt
-      updatedAt
-      posts {
-        items {
-          id
-          title
-          blogID
-          username
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const listBlogs = /* GraphQL */ `
-  query ListBlogs(
-    $filter: ModelBlogFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        username
-        createdAt
-        updatedAt
-        posts {
-          nextToken
-        }
-      }
-      nextToken
-    }
-  }
-`;
 export const getPost = /* GraphQL */ `
   query GetPost($id: ID!) {
     getPost(id: $id) {
       id
       title
-      blogID
+      content
       username
       createdAt
       updatedAt
-      blog {
-        id
-        name
-        username
-        createdAt
-        updatedAt
-        posts {
-          nextToken
-        }
-      }
       comments {
         items {
           id
@@ -87,17 +34,10 @@ export const listPosts = /* GraphQL */ `
       items {
         id
         title
-        blogID
+        content
         username
         createdAt
         updatedAt
-        blog {
-          id
-          name
-          username
-          createdAt
-          updatedAt
-        }
         comments {
           nextToken
         }
@@ -124,17 +64,10 @@ export const postsByUsername = /* GraphQL */ `
       items {
         id
         title
-        blogID
+        content
         username
         createdAt
         updatedAt
-        blog {
-          id
-          name
-          username
-          createdAt
-          updatedAt
-        }
         comments {
           nextToken
         }
@@ -155,17 +88,10 @@ export const getComment = /* GraphQL */ `
       post {
         id
         title
-        blogID
+        content
         username
         createdAt
         updatedAt
-        blog {
-          id
-          name
-          username
-          createdAt
-          updatedAt
-        }
         comments {
           nextToken
         }
@@ -190,7 +116,7 @@ export const listComments = /* GraphQL */ `
         post {
           id
           title
-          blogID
+          content
           username
           createdAt
           updatedAt
