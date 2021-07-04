@@ -2,75 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
-import { CheckCircleIcon, LinkIcon } from "@chakra-ui/icons";
-import {
-  Center,
-  Heading,
-  List,
-  ListIcon,
-  ListItem,
-  Text,
-  Box,
-  useColorMode,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
 import Link from "next/link";
-import { motion, AnimateSharedLayout } from "framer-motion";
-import attentionPic from "../src/images/attention.png";
-
-import { sitePages } from "../public/site-info/pages";
-
-const MotionBox = motion(Box);
-const MotionContainer = motion(Box);
-const MotionImage = motion(Box);
-
-const boxVariants = {
-  hidden: {
-    x: "-5rem",
-    opacity: 0,
-    rotate: [90],
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { type: "spring", stiffness: 500, damping: 30 },
-  },
-};
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const imgVariants = {
-  hidden: {
-    opacity: 0,
-    y: -100,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
-const imgIds = [0, 1, 2, 3, 4, 5, 6];
-const initialLeft = -25.2;
 
 export default function Home() {
-  const { colorMode } = useColorMode();
   const [display, setDisplay] = useState(false);
-  const initialState = {
-    imgOne: false,
-    imgTwo: false,
-    imgThree: false,
-    imgFour: false,
-  };
 
   const handleHover = (img, e) => {
     const isMouseEnter = e.type === "mouseenter";
@@ -89,42 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <AnimateSharedLayout>
-          <List spacing={8} my={0} fontSize="1.5rem">
-            {sitePages.map((page) => {
-              return (
-                <ListItem
-                  key={page.id}
-                  position="relative"
-                  onMouseEnter={(e) => handleHover(page.alias, e)}
-                  onMouseLeave={(e) => handleHover(page.alias, e)}
-                >
-                  {display[page.alias] && (
-                    <MotionBox
-                      position="absolute"
-                      left="-6rem"
-                      top="-3rem"
-                      variants={boxVariants}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      <Image
-                        src={attentionPic}
-                        alt="pointer"
-                        width={45}
-                        height={120}
-                      />
-                    </MotionBox>
-                  )}
-                  <ListIcon as={CheckCircleIcon} color="green.500" />
-                  <p>{page.name}</p>
-                </ListItem>
-              );
-            })}
-          </List>
-        </AnimateSharedLayout>
-      </main>
+      <main className={styles.main}></main>
 
       <footer className={styles.footer}>
         <span className={styles.logo}>
