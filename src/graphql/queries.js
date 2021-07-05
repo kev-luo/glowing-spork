@@ -8,6 +8,7 @@ export const getPost = /* GraphQL */ `
       title
       content
       username
+      postImage
       createdAt
       updatedAt
       comments {
@@ -36,6 +37,7 @@ export const listPosts = /* GraphQL */ `
         title
         content
         username
+        postImage
         createdAt
         updatedAt
         comments {
@@ -66,6 +68,7 @@ export const postsByUsername = /* GraphQL */ `
         title
         content
         username
+        postImage
         createdAt
         updatedAt
         comments {
@@ -90,6 +93,7 @@ export const getComment = /* GraphQL */ `
         title
         content
         username
+        postImage
         createdAt
         updatedAt
         comments {
@@ -118,6 +122,7 @@ export const listComments = /* GraphQL */ `
           title
           content
           username
+          postImage
           createdAt
           updatedAt
         }
