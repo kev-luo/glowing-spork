@@ -13,11 +13,11 @@ export default function Nav({ signedInUser }) {
       <Link href="/profile" passHref>
         <span>Profile</span>
       </Link>
-      {signedInUser && (
+      {/* {signedInUser && (
         <Link href="/my-posts" passHref>
           <span>My Posts</span>
         </Link>
-      )}
+      )} */}
     </nav>
   );
 }

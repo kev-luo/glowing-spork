@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
+import "easymde/dist/easymde.min.css";
 
 const initialState = { title: "", content: "" };
 

@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 import { updatePost } from "../../src/graphql/mutations";
 import { getPost } from "../../src/graphql/queries";
 import Image from "next/image";
+import "easymde/dist/easymde.min.css";
 
 function EditPost() {
   const [post, setPost] = useState(null);
