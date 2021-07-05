@@ -1,8 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
+import Image from "next/image";
+import { API, Storage } from "aws-amplify";
+import { listPosts } from "../src/graphql/queries";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -17,8 +19,8 @@ export default function Home() {
     // Fetch images from S3 for posts that contain a cover image
     const postsWithImages = await Promise.all(
       items.map(async (post) => {
-        if (post.coverImage) {
-          post.coverImage = await Storage.get(post.coverImage);
+        if (post.postImage) {
+          post.postImage = await Storage.get(post.postImage);
         }
         return post;
       })
