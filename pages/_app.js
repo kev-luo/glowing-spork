@@ -1,5 +1,5 @@
-import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import "../styles/globals.css";
 import "../configureAmplify";
 import { useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
