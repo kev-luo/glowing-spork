@@ -7,6 +7,10 @@ import { getPost } from "../../src/graphql/queries";
 import Image from "next/image";
 import "easymde/dist/easymde.min.css";
 
+const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
+
 function EditPost() {
   const [post, setPost] = useState(null);
   const router = useRouter();
@@ -67,9 +71,6 @@ function EditPost() {
     router.push("/");
   }
 
-  const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
-    ssr: false,
-  });
   return (
     <div>
       <h1>Edit post</h1>

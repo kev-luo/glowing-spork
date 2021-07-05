@@ -10,6 +10,9 @@ import "easymde/dist/easymde.min.css";
 
 const initialState = { title: "", content: "" };
 
+const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
 function CreatePost() {
   const [post, setPost] = useState(initialState);
   const [image, setImage] = useState(null);
@@ -45,9 +48,6 @@ function CreatePost() {
     if (!fileUploaded) return;
     setImage(fileUploaded);
   }
-  const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
-    ssr: false,
-  });
   return (
     <div>
       <h1>Create new post</h1>
@@ -57,7 +57,7 @@ function CreatePost() {
         placeholder="Title"
         value={post.title}
       />
-      {image && <Image src={URL.createObjectURL(image)} alt={post.title} />}
+      {/* {image && <Image src={URL.createObjectURL(image)} alt={post.title} />} */}
       <SimpleMdeEditor
         value={post.content}
         onChange={(value) => setPost({ ...post, content: value })}
