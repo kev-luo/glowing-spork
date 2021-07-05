@@ -5,17 +5,26 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const [display, setDisplay] = useState(false);
-
-  const handleHover = (img, e) => {
-    const isMouseEnter = e.type === "mouseenter";
-    setDisplay((display) => {
-      return {
-        ...display,
-        [img]: isMouseEnter,
-      };
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  async function fetchPosts() {
+    const postData = await API.graphql({
+      query: listPosts,
     });
-  };
+    const { items } = postData.data.listPosts;
+    // Fetch images from S3 for posts that contain a cover image
+    const postsWithImages = await Promise.all(
+      items.map(async (post) => {
+        if (post.coverImage) {
+          post.coverImage = await Storage.get(post.coverImage);
+        }
+        return post;
+      })
+    );
+    setPosts(postsWithImages);
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -24,7 +33,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        {posts.map((post, index) => {
+          return (
+            <Link key={index} href={`/posts/#{post.id}`} passHref>
+              <div>
+                <h2>{post.title}</h2>
+                <p>Author: {post.username}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </main>
 
       <footer className={styles.footer}>
         <span className={styles.logo}>
