@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 import { updatePost } from "../../src/graphql/mutations";
 import { getPost } from "../../src/graphql/queries";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
 
 const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
