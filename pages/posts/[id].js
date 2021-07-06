@@ -9,7 +9,7 @@ export default function Post({ post }) {
   const [postImage, setPostImage] = useState(null);
   useEffect(() => {
     async function updatePostImage() {
-      if (post.coverImage) {
+      if (post.postImage) {
         const imageKey = await Storage.get(post.postImage);
         setPostImage(imageKey);
       }
@@ -25,7 +25,7 @@ export default function Post({ post }) {
   return (
     <div>
       <h1>{post.title}</h1>
-      {postImage && <Image src={postImage} alt={post.title} />}
+      {postImage && <img src={postImage} alt={post.title} />}
       <p>by {post.username}</p>
       <div>
         <ReactMarkdown>{post.content}</ReactMarkdown>

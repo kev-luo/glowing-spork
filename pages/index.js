@@ -8,6 +8,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [testImage, setTestImage] = useState(null);
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -26,6 +27,10 @@ export default function Home() {
       })
     );
     setPosts(postsWithImages);
+
+    const test_data = await Storage.get("attention.png");
+    setTestImage(test_data);
+    console.log(test_data);
   }
   return (
     <div className={styles.container}>
@@ -47,11 +52,10 @@ export default function Home() {
           );
         })}
       </main>
+      <div>{testImage && <img src={testImage} alt="test image" />}</div>
 
       <footer className={styles.footer}>
-        <span className={styles.logo}>
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </span>
+        <span className={styles.logo}></span>
       </footer>
     </div>
   );
