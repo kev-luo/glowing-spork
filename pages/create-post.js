@@ -3,7 +3,6 @@ import { useState, useRef } from "react"; // new
 import { API, Storage } from "aws-amplify";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
@@ -57,7 +56,7 @@ function CreatePost() {
         placeholder="Title"
         value={post.title}
       />
-      {/* {image && <Image src={URL.createObjectURL(image)} alt={post.title} />} */}
+      {image && <img src={image} alt={post.title} />}
       <SimpleMdeEditor
         value={post.content}
         onChange={(value) => setPost({ ...post, content: value })}

@@ -52,7 +52,6 @@ export default function Home() {
           );
         })}
       </main>
-      <div>{testImage && <img src={testImage} alt="test image" />}</div>
 
       <footer className={styles.footer}>
         <span className={styles.logo}></span>
