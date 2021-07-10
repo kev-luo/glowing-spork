@@ -21,8 +21,8 @@ export default function Nav(props) {
       color={["white", "white", "primary.700", "primary.700"]}
       {...props}
     >
-      <MenuToggle toggle={toggle} isOpen={isOpen} />
       <Logo />
+      <MenuToggle toggle={toggle} isOpen={isOpen} />
       <Box
         display={{ base: isOpen ? "block" : "none", md: "block" }}
         flexBasis={{ base: "100%", md: "auto" }}

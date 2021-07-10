@@ -9,6 +9,7 @@ export default function NavItem(props) {
       mb={{ base: isLast ? 0 : 8, sm: 0 }}
       mr={{ base: 0, sm: isLast ? 0 : 8 }}
       display="block"
+      _hover={{ cursor: "pointer" }}
       {...rest}
     >
       <Link href={to} passHref>

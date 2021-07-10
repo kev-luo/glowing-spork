@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { API, Storage } from "aws-amplify";
 import { Container, Heading, Box } from "@chakra-ui/react";
 import { listPosts } from "../src/graphql/queries";
@@ -39,16 +40,17 @@ export default function Home() {
         <Heading as="h1">Stories by Danno</Heading>
         {posts.map((post, index) => {
           return (
-            <Box
-              mt={{ base: "1", sm: "5" }}
-              display="flex"
-              flexDir={{ base: "column", sm: "row" }}
-              justifyContent="space-between"
-              key={index}
-            >
-              <PostImage />
-              <PostText post={post} />
-            </Box>
+            <Link key={index} href={`/posts/${post.id}`} passHref>
+              <Box
+                mt={{ base: "1", sm: "5" }}
+                display="flex"
+                flexDir={{ base: "column", sm: "row" }}
+                justifyContent="space-between"
+              >
+                <PostImage postImage={post.postImage} />
+                <PostText post={post} />
+              </Box>
+            </Link>
           );
         })}
       </Container>

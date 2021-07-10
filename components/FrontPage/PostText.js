@@ -6,22 +6,19 @@ import {
   HStack,
   Image,
   useColorModeValue,
-  Link as ChakraLink,
 } from "@chakra-ui/react";
 
 export default function PostText({ post }) {
   return (
     <Box
       display="flex"
-      flex="1"
+      flex="2"
       flexDirection="column"
       justifyContent="center"
       marginTop={{ base: "3", sm: "0" }}
     >
-      <Heading marginTop="1">
-        <ChakraLink textDecoration="none" _hover={{ textDecoration: "none" }}>
-          {post.title}
-        </ChakraLink>
+      <Heading marginTop="1" _hover={{ cursor: "pointer" }}>
+        {post.title}
       </Heading>
       <HStack mt="2" spacing="2" display="flex" alignItems="center">
         {/* <Image

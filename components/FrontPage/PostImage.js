@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Box,
-  Image,
-  useColorModeValue,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
+import { Box, Image, useColorModeValue } from "@chakra-ui/react";
 
-export default function PostImage() {
+export default function PostImage(props) {
+  const { postImage } = props;
   return (
     <Box
       display="flex"
@@ -21,16 +17,12 @@ export default function PostImage() {
         marginLeft={{ base: "0", sm: "5%" }}
         marginTop="5%"
       >
-        <ChakraLink textDecoration="none" _hover={{ textDecoration: "none" }}>
-          <Image
-            borderRadius="lg"
-            src={
-              "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-            }
-            alt="some good alt text"
-            objectFit="contain"
-          />
-        </ChakraLink>
+        <Image
+          borderRadius="lg"
+          src={postImage}
+          alt="some good alt text"
+          objectFit="contain"
+        />
       </Box>
       <Box zIndex="1" width="100%" position="absolute" height="100%">
         <Box

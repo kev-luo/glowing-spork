@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
-import Image from "next/image";
 import { listPosts, getPost } from "../../src/graphql/queries";
 
-export default function Post({ post }) {
+export default function Post(props) {
+  const { post } = props;
   const [postImage, setPostImage] = useState(null);
   useEffect(() => {
     async function updatePostImage() {
@@ -17,7 +17,6 @@ export default function Post({ post }) {
     updatePostImage();
   }, [post]);
 
-  console.log("post: ", post);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -26,7 +25,7 @@ export default function Post({ post }) {
     <div>
       <h1>{post.title}</h1>
       {postImage && <img src={postImage} alt={post.title} />}
-      <p>by {post.username}</p>
+      <p>by: {post.username}</p>
       <div>
         <ReactMarkdown>{post.content}</ReactMarkdown>
       </div>
