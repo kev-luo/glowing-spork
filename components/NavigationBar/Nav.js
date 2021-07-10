@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Link from "next/link";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 
 import MenuToggle from "./MenuToggle";
 import Logo from "./Logo";
+import NavItem from "./NavItem";
 
 export default function Nav(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,15 +23,22 @@ export default function Nav(props) {
     >
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <Logo />
-      <Link href="/" passHref>
-        <span>Home</span>
-      </Link>
-      <Link href="/create-post" passHref>
-        <span>Create Post</span>
-      </Link>
-      <Link href="/profile" passHref>
-        <span>Profile</span>
-      </Link>
+      <Box
+        display={{ base: isOpen ? "block" : "none", md: "block" }}
+        flexBasis={{ base: "100%", md: "auto" }}
+      >
+        <Flex
+          align={["center", "center", "center", "center"]}
+          justify={["center", "space-between", "flex-end", "flex-end"]}
+          direction={["column", "row", "row", "row"]}
+          pt={[4, 4, 0, 0]}
+        >
+          <NavItem to="/">Home</NavItem>
+          <NavItem to="/create-post">Create Post</NavItem>
+          <NavItem to="/profile">Profile</NavItem>
+        </Flex>
+      </Box>
+
       {/* {props.signedInUser && (
         <Link href="/my-posts" passHref>
           <span>My Posts</span>

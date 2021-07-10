@@ -12,7 +12,7 @@ export default function NavItem(props) {
       {...rest}
     >
       <Link href={to} passHref>
-        {children}
+        <span>{children}</span>
       </Link>
     </Text>
   );
