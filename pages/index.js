@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Head from "next/head";
 import { API, Storage } from "aws-amplify";
+import {
+  Container,
+  Heading,
+  Box,
+  Image,
+  Text,
+  useColorModeValue,
+  Link as ChakraLink,
+  HStack,
+} from "@chakra-ui/react";
 import { listPosts } from "../src/graphql/queries";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
-  const [testImage, setTestImage] = useState(null);
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -25,10 +33,6 @@ export default function Home() {
       })
     );
     setPosts(postsWithImages);
-
-    const test_data = await Storage.get("attention.png");
-    setTestImage(test_data);
-    console.log(test_data);
   }
   return (
     <div>
@@ -38,18 +42,96 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <Container maxW={"7xl"} p="12">
+        <Heading as="h1">Stories by Danno</Heading>
         {posts.map((post, index) => {
           return (
-            <Link key={index} href={`/posts/#{post.id}`} passHref>
-              <div>
-                <h2>{post.title}</h2>
-                <p>Author: {post.username}</p>
-              </div>
-            </Link>
+            <Box
+              mt={{ base: "1", sm: "5" }}
+              display="flex"
+              flexDir={{ base: "column", sm: "row" }}
+              justifyContent="space-between"
+              key={index}
+            >
+              <Box
+                display="flex"
+                flex="1"
+                marginRight="3"
+                position="relative"
+                alignItems="center"
+              >
+                <Box
+                  width={{ base: "100%", sm: "85%" }}
+                  zIndex="2"
+                  marginLeft={{ base: "0", sm: "5%" }}
+                  marginTop="5%"
+                >
+                  <ChakraLink
+                    textDecoration="none"
+                    _hover={{ textDecoration: "none" }}
+                  >
+                    <Image
+                      borderRadius="lg"
+                      src={
+                        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
+                      }
+                      alt="some good alt text"
+                      objectFit="contain"
+                    />
+                  </ChakraLink>
+                </Box>
+                <Box zIndex="1" width="100%" position="absolute" height="100%">
+                  <Box
+                    bgGradient={useColorModeValue(
+                      "radial(orange.600 1px, transparent 1px)",
+                      "radial(orange.300 1px, transparent 1px)"
+                    )}
+                    backgroundSize="20px 20px"
+                    opacity="0.4"
+                    height="100%"
+                  />
+                </Box>
+              </Box>
+              <Box
+                display="flex"
+                flex="1"
+                flexDirection="column"
+                justifyContent="center"
+                marginTop={{ base: "3", sm: "0" }}
+              >
+                <Heading marginTop="1">
+                  <ChakraLink
+                    textDecoration="none"
+                    _hover={{ textDecoration: "none" }}
+                  >
+                    {post.title}
+                  </ChakraLink>
+                </Heading>
+                <Text
+                  as="p"
+                  marginTop="2"
+                  color={useColorModeValue("gray.700", "gray.200")}
+                  fontSize="lg"
+                >
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the
+                </Text>
+                <HStack mt="2" spacing="2" display="flex" alignItems="center">
+                  <Image
+                    borderRadius="full"
+                    boxSize="40px"
+                    src={"https://100k-faces.glitch.me/random-image"}
+                    alt={`Avatar of ${post.username}`}
+                  />
+                  <Text fontWeight="medium">{post.username}</Text>
+                  <Text>-</Text>
+                  <Text>{post.createdAt}</Text>
+                </HStack>
+              </Box>
+            </Box>
           );
         })}
-      </main>
+      </Container>
 
       <footer>
         <span></span>

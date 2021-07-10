@@ -9,6 +9,7 @@ export const onCreatePost = /* GraphQL */ `
       content
       username
       postImage
+      tags
       createdAt
       updatedAt
       comments {
@@ -33,6 +34,7 @@ export const onUpdatePost = /* GraphQL */ `
       content
       username
       postImage
+      tags
       createdAt
       updatedAt
       comments {
@@ -57,6 +59,7 @@ export const onDeletePost = /* GraphQL */ `
       content
       username
       postImage
+      tags
       createdAt
       updatedAt
       comments {
@@ -88,6 +91,7 @@ export const onCreateComment = /* GraphQL */ `
         content
         username
         postImage
+        tags
         createdAt
         updatedAt
         comments {
@@ -112,6 +116,7 @@ export const onUpdateComment = /* GraphQL */ `
         content
         username
         postImage
+        tags
         createdAt
         updatedAt
         comments {
@@ -136,6 +141,7 @@ export const onDeleteComment = /* GraphQL */ `
         content
         username
         postImage
+        tags
         createdAt
         updatedAt
         comments {
