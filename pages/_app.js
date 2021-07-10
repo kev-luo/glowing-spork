@@ -3,7 +3,7 @@ import "../configureAmplify";
 import { useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
 
-import Nav from "../components/Nav";
+import Nav from "../components/NavigationBar/Nav";
 
 function MyApp({ Component, pageProps }) {
   const [signedInUser, setSignedInUser] = useState(false);

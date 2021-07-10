@@ -1,13 +1,15 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Flex, Box, Text } from "@chakra-ui/react";
 
-export default function Logo() {
+export default function Logo(props) {
   return (
-    <Box {...props}>
-      {/* replace with SVG */}
-      <Text fontSize="lg" fontWeight="bold">
-        Logo
-      </Text>
-    </Box>
+    <Flex align="center">
+      <Box {...props}>
+        {/* replace with SVG */}
+        <Text fontSize="lg" fontWeight="bold">
+          Logo
+        </Text>
+      </Box>
+    </Flex>
   );
 }
