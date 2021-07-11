@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
-import { Text, Input, Button } from "@chakra-ui/react";
+import { Text, Input, Button, Image } from "@chakra-ui/react";
 
 const initialState = { title: "", content: "" };
 
@@ -63,7 +63,6 @@ function CreatePost() {
         textColor="gray.500"
         _placeholder={{ textColor: "gray.500" }}
       />
-      {image && <img src={image} alt={post.title} />}
       <SimpleMdeEditor
         value={post.content}
         onChange={(value) => setPost({ ...post, content: value })}
