@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
+import { Container, Image, Heading, Text, Box } from "@chakra-ui/react";
+
 import { listPosts, getPost } from "../../src/graphql/queries";
 
 export default function Post(props) {
@@ -22,14 +24,25 @@ export default function Post(props) {
     return <div>Loading...</div>;
   }
   return (
-    <div>
-      <h1>{post.title}</h1>
-      {postImage && <img src={postImage} alt={post.title} />}
-      <p>by: {post.username}</p>
-      <div>
-        <ReactMarkdown>{post.content}</ReactMarkdown>
-      </div>
-    </div>
+    <Container maxW="7xl" p={12}>
+      <Heading fontSize="5xl" fontWeight="semibold" letterSpacing="wide">
+        {post.title}
+      </Heading>
+      {postImage && (
+        <Image
+          src={postImage}
+          alt={post.title}
+          borderRadius="lg"
+          objectFit="contain"
+        />
+      )}
+      <Text my={4} fontWeight="light" fontSize="small">
+        by: {post.username}
+      </Text>
+      <Box mt={8}>
+        <ReactMarkdown className="prose">{post.content}</ReactMarkdown>
+      </Box>
+    </Container>
   );
 }
 

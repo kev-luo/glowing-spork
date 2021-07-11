@@ -19,9 +19,9 @@ export default function PostImage(props) {
         marginTop="5%"
       >
         <Image
-          borderRadius="lg"
           src={postImage}
           alt="some good alt text"
+          borderRadius="lg"
           objectFit="contain"
         />
       </Box>
