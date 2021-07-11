@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, useColorModeValue } from "@chakra-ui/react";
 
 import MenuToggle from "./MenuToggle";
 import Logo from "./Logo";
@@ -8,6 +8,7 @@ import DarkModeSwitch from "../DarkModeSwitch";
 
 export default function Nav(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const { signedInUser, ...rest } = props;
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Flex
@@ -19,8 +20,8 @@ export default function Nav(props) {
       mb={8}
       p={8}
       bg={["primary.500", "primary.500", "transparent", "transparent"]}
-      color={["white", "white", "primary.700", "primary.700"]}
-      {...props}
+      color={useColorModeValue("gray.700", "gray.200")}
+      {...rest}
     >
       <Logo />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
@@ -40,12 +41,6 @@ export default function Nav(props) {
           <DarkModeSwitch />
         </Flex>
       </Box>
-
-      {/* {props.signedInUser && (
-        <Link href="/my-posts" passHref>
-          <span>My Posts</span>
-        </Link>
-      )} */}
     </Flex>
   );
 }
