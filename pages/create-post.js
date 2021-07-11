@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
+import { Text, Input, Button } from "@chakra-ui/react";
 
 const initialState = { title: "", content: "" };
 
@@ -49,23 +50,55 @@ function CreatePost() {
   }
   return (
     <div>
-      <h1>Create new post</h1>
-      <input
-        onChange={onChange}
-        name="title"
+      <Text fontSize="3xl" fontWeight="semibold" letterSpacing="wide" mt={6}>
+        Create new post
+      </Text>
+      <Input
+        variant="flushed"
         placeholder="Title"
+        name="title"
+        onChange={onChange}
         value={post.title}
+        my={3}
+        textColor="gray.500"
+        _placeholder={{ textColor: "gray.500" }}
       />
       {image && <img src={image} alt={post.title} />}
       <SimpleMdeEditor
         value={post.content}
         onChange={(value) => setPost({ ...post, content: value })}
       />
-      <input type="file" ref={hiddenFileInput} onChange={handleChange} />
-      <button onClick={uploadImage}>Upload Cover Image</button>
-      <button type="button" onClick={createNewPost}>
+      <Input
+        as="input"
+        type="file"
+        ref={hiddenFileInput}
+        onChange={handleChange}
+        w={0}
+        h={0}
+        pos="absolute"
+      />
+      <Button
+        onClick={uploadImage}
+        colorScheme="purple"
+        textColor="white"
+        fontWeight="semibold"
+        px={8}
+        py={2}
+        mr={2}
+      >
+        Upload Cover Image
+      </Button>
+      <Button
+        type="button"
+        onClick={createNewPost}
+        colorScheme="blue"
+        textColor="white"
+        fontWeight="semibold"
+        px={8}
+        py={2}
+      >
         Create Post
-      </button>
+      </Button>
     </div>
   );
 }
