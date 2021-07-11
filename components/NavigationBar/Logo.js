@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex, Box, Text } from "@chakra-ui/react";
 
+// navbar logo
 export default function Logo(props) {
   return (
     <Flex align="center">

@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Image, useColorModeValue } from "@chakra-ui/react";
 
+// home page - single post image
 export default function PostImage(props) {
   const { postImage } = props;
   return (

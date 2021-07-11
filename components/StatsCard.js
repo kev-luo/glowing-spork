@@ -6,6 +6,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+// used in profile page to display user info
 export default function StatsCard(props) {
   const { title, stat } = props;
   return (

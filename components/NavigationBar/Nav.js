@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import NavItem from "./NavItem";
 import DarkModeSwitch from "../DarkModeSwitch";
 
+// navbar container
 export default function Nav(props) {
   const [isOpen, setIsOpen] = useState(false);
   const { signedInUser, ...rest } = props;

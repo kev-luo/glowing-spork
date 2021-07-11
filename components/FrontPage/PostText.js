@@ -8,6 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+// home page - single post text
 export default function PostText({ post }) {
   return (
     <Box
