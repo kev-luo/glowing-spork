@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
-import { Text, Input, Button, Image } from "@chakra-ui/react";
+import { Text, Input, Button, Container, Image } from "@chakra-ui/react";
 
 const initialState = { title: "", content: "" };
 
@@ -49,7 +49,7 @@ function CreatePost() {
     setImage(fileUploaded);
   }
   return (
-    <div>
+    <Container maxW="7xl">
       <Text fontSize="3xl" fontWeight="semibold" letterSpacing="wide" mt={6}>
         Create new post
       </Text>
@@ -98,7 +98,7 @@ function CreatePost() {
       >
         Create Post
       </Button>
-    </div>
+    </Container>
   );
 }
 

@@ -36,7 +36,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxW={"7xl"} p="12">
+      <Container maxW="7xl" p={12}>
         <Heading as="h1">Stories by Danno</Heading>
         {posts.map((post, index) => {
           return (

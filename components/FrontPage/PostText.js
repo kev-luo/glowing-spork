@@ -37,6 +37,7 @@ export default function PostText({ post }) {
         marginTop="2"
         color={useColorModeValue("gray.700", "gray.200")}
         fontSize="lg"
+        isTruncated
       >
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the
