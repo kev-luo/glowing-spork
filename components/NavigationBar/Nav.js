@@ -4,6 +4,7 @@ import { Flex, Box } from "@chakra-ui/react";
 import MenuToggle from "./MenuToggle";
 import Logo from "./Logo";
 import NavItem from "./NavItem";
+import DarkModeSwitch from "../DarkModeSwitch";
 
 export default function Nav(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +37,7 @@ export default function Nav(props) {
           <NavItem to="/">Home</NavItem>
           <NavItem to="/create-post">Create Post</NavItem>
           <NavItem to="/profile">Profile</NavItem>
+          <DarkModeSwitch />
         </Flex>
       </Box>
 
