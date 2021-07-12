@@ -6,7 +6,17 @@ import { useRouter } from "next/router";
 import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
-import { Text, Input, Button, Container, Image } from "@chakra-ui/react";
+import {
+  Text,
+  Input,
+  Button,
+  Container,
+  useDisclosure,
+  Image,
+} from "@chakra-ui/react";
+
+import EmojiModal from "../components/EmojiModal";
+import EmojiSearch from "../components/EmojiSearch";
 
 const initialState = { title: "", content: "" };
 
@@ -14,6 +24,7 @@ const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 function CreatePost() {
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const [post, setPost] = useState(initialState);
   const [image, setImage] = useState(null);
   const hiddenFileInput = useRef(null);
@@ -50,6 +61,9 @@ function CreatePost() {
   }
   return (
     <Container maxW="7xl">
+      <EmojiModal onClose={onClose} isOpen={isOpen}>
+        <EmojiSearch />
+      </EmojiModal>
       <Text fontSize="3xl" fontWeight="semibold" letterSpacing="wide" mt={6}>
         Create new post
       </Text>
@@ -99,7 +113,13 @@ function CreatePost() {
       >
         Create Post
       </Button>
-      <Button colorScheme="yellow" fontWeight="semibold" px={8} py={2}>
+      <Button
+        onClick={onOpen}
+        colorScheme="yellow"
+        fontWeight="semibold"
+        px={8}
+        py={2}
+      >
         Add Food Emoji
       </Button>
     </Container>
