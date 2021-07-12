@@ -11,7 +11,7 @@ export const createPost = /* GraphQL */ `
       title
       content
       username
-      postImage
+      postEmoji
       tags
       createdAt
       updatedAt
@@ -39,7 +39,7 @@ export const updatePost = /* GraphQL */ `
       title
       content
       username
-      postImage
+      postEmoji
       tags
       createdAt
       updatedAt
@@ -67,7 +67,7 @@ export const deletePost = /* GraphQL */ `
       title
       content
       username
-      postImage
+      postEmoji
       tags
       createdAt
       updatedAt
@@ -102,7 +102,7 @@ export const createComment = /* GraphQL */ `
         title
         content
         username
-        postImage
+        postEmoji
         tags
         createdAt
         updatedAt
@@ -130,7 +130,7 @@ export const updateComment = /* GraphQL */ `
         title
         content
         username
-        postImage
+        postEmoji
         tags
         createdAt
         updatedAt
@@ -158,7 +158,7 @@ export const deleteComment = /* GraphQL */ `
         title
         content
         username
-        postImage
+        postEmoji
         tags
         createdAt
         updatedAt

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Box, Input } from "@chakra-ui/react";
+import { Box, Input, List, ListItem } from "@chakra-ui/react";
 
-export default function EmojiSearch() {
+export default function EmojiSearch(props) {
+  const { onClose, onEmojiChange } = props;
   const initialState = [
     { symbol: "⏳", title: "Loading...", keywords: ["Loading"] },
   ];
@@ -36,26 +37,32 @@ export default function EmojiSearch() {
       });
   }, []);
 
-  const handleChange = (evt) => {
-    const filteredList = filterEmoji(evt.target.value, 20);
-    setFilteredEmojis(filteredList);
-  };
+  function selectEmoji(evt) {
+    const emoji = evt.target.childNodes[0].data;
+    onEmojiChange(emoji);
+    onClose();
+  }
+
   return (
     <Box>
-      <Input placeholder="Emoji Search" name="emoji" onChange={handleChange} />
-      <ul>
+      <Input
+        placeholder="Emoji Search"
+        name="emoji"
+        onChange={(e) => setFilteredEmojis(filterEmoji(e.target.value, 20))}
+      />
+      <List spacing={1}>
         {filteredEmojis?.length > 0 ? (
           filteredEmojis.map((emoji, index) => {
             return (
-              <li key={index}>
+              <ListItem key={index} onClick={(evt) => selectEmoji(evt)}>
                 {emoji.symbol} {emoji.title}
-              </li>
+              </ListItem>
             );
           })
         ) : (
           <li>No matches</li>
         )}
-      </ul>
+      </List>
     </Box>
   );
 }

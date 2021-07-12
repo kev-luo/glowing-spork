@@ -11,7 +11,7 @@ export default function PostImage(props) {
       position="relative"
       alignItems="center"
     >
-      <Box
+      {/* <Box
         width={{ base: "100%", sm: "85%" }}
         zIndex="2"
         marginLeft={{ base: "0", sm: "5%" }}
@@ -23,7 +23,7 @@ export default function PostImage(props) {
           borderRadius="lg"
           objectFit="contain"
         />
-      </Box>
+      </Box> */}
       <Box zIndex="1" width="100%" position="absolute" height="100%">
         <Box
           bgGradient={useColorModeValue(

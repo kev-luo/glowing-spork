@@ -8,7 +8,7 @@ export const getPost = /* GraphQL */ `
       title
       content
       username
-      postImage
+      postEmoji
       tags
       createdAt
       updatedAt
@@ -38,7 +38,7 @@ export const listPosts = /* GraphQL */ `
         title
         content
         username
-        postImage
+        postEmoji
         tags
         createdAt
         updatedAt
@@ -70,7 +70,7 @@ export const postsByUsername = /* GraphQL */ `
         title
         content
         username
-        postImage
+        postEmoji
         tags
         createdAt
         updatedAt
@@ -96,7 +96,7 @@ export const getComment = /* GraphQL */ `
         title
         content
         username
-        postImage
+        postEmoji
         tags
         createdAt
         updatedAt
@@ -126,7 +126,7 @@ export const listComments = /* GraphQL */ `
           title
           content
           username
-          postImage
+          postEmoji
           tags
           createdAt
           updatedAt
