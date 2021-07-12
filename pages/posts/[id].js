@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";

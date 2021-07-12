@@ -95,8 +95,12 @@ function CreatePost() {
         fontWeight="semibold"
         px={8}
         py={2}
+        mr={2}
       >
         Create Post
+      </Button>
+      <Button colorScheme="yellow" fontWeight="semibold" px={8} py={2}>
+        Add Food Emoji
       </Button>
     </Container>
   );
