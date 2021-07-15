@@ -4,7 +4,7 @@ import { Box, Input, List, ListItem } from "@chakra-ui/react";
 export default function EmojiSearch(props) {
   const { onClose, onEmojiChange } = props;
   const initialState = [
-    { symbol: "⏳", title: "Loading...", keywords: ["Loading"] },
+    { symbol: "🔎", title: "Search Emojis", keywords: ["search"] },
   ];
   const [emojiList, setEmojiList] = useState(initialState);
   //   use search term to filter emojiList by title or keyword keys
@@ -15,7 +15,7 @@ export default function EmojiSearch(props) {
           return true;
         }
 
-        if (emoji?.keywords.includes(searchText)) {
+        if (emoji?.keywords.includes(searchText.toLowerCase())) {
           return true;
         }
 
@@ -39,8 +39,11 @@ export default function EmojiSearch(props) {
 
   function selectEmoji(evt) {
     const emoji = evt.target.childNodes[0].data;
-    onEmojiChange(emoji);
-    onClose();
+    const emojiTitle = evt.target.childNodes[2].data;
+    if (emojiTitle !== "Search Emojis") {
+      onEmojiChange(emoji);
+      onClose();
+    }
   }
 
   return (
