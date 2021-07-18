@@ -39,9 +39,9 @@ export default function EmojiSearch(props) {
 
   function selectEmoji(evt) {
     const emoji = evt.target.childNodes[0].data;
-    const emojiTitle = evt.target.childNodes[2].data;
+    const emojiTitle = evt.target.innerText.slice(2);
     if (emojiTitle !== "Search Emojis") {
-      onEmojiChange(emoji);
+      onEmojiChange(emoji, emojiTitle);
       onClose();
     }
   }
@@ -57,7 +57,7 @@ export default function EmojiSearch(props) {
         {filteredEmojis?.length > 0 ? (
           filteredEmojis.map((emoji, index) => {
             return (
-              <ListItem key={index} onClick={(evt) => selectEmoji(evt)}>
+              <ListItem key={index} onClick={(emoji) => selectEmoji(emoji)}>
                 {emoji.symbol} {emoji.title}
               </ListItem>
             );

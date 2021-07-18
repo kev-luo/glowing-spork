@@ -271,6 +271,17 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
+          "name" : "postEmojiTitle",
+          "description" : null,
+          "args" : [ ],
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
           "name" : "tags",
           "description" : null,
           "args" : [ ],
@@ -1218,6 +1229,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "postEmojiTitle",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelStringInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "tags",
           "description" : null,
           "type" : {
@@ -1531,6 +1551,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "postEmojiTitle",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "tags",
           "description" : null,
           "type" : {
@@ -1572,6 +1601,15 @@
           "defaultValue" : null
         }, {
           "name" : "postEmoji",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelStringInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "postEmojiTitle",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1674,6 +1712,15 @@
           "defaultValue" : null
         }, {
           "name" : "postEmoji",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "postEmojiTitle",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",

@@ -47,7 +47,7 @@ export default function Home() {
                 flexDir={{ base: "column", sm: "row" }}
                 justifyContent="space-between"
               >
-                <PostImage postEmoji={post.postEmoji} />
+                <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
                 <PostText post={post} />
               </Box>
             </Link>

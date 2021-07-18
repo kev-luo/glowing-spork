@@ -12,13 +12,15 @@ export default function PostText({ post }) {
   return (
     <Box
       display="flex"
-      flex="2"
+      flex="10"
       flexDirection="column"
       justifyContent="center"
-      marginTop={{ base: "3", sm: "0" }}
+      mt={{ base: "3", sm: "0" }}
     >
       <Heading
-        marginTop="1"
+        mt="1"
+        as="h4"
+        size="md"
         color={useColorModeValue("gray.700", "gray.200")}
         _hover={{ cursor: "pointer" }}
       >

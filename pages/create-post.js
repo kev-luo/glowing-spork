@@ -30,8 +30,8 @@ function CreatePost() {
   function onChange(e) {
     setPost(() => ({ ...post, [e.target.name]: e.target.value }));
   }
-  function onEmojiChange(emoji) {
-    setPost(() => ({ ...post, postEmoji: emoji }));
+  function onEmojiChange(emoji, emojiTitle) {
+    setPost(() => ({ ...post, postEmoji: emoji, postEmojiTitle: emojiTitle }));
   }
   async function createNewPost() {
     if (!title || !content) return;
