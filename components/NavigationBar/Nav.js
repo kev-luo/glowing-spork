@@ -39,6 +39,7 @@ export default function Nav(props) {
           <NavItem to="/">Home</NavItem>
           <NavItem to="/create-post">Create Post</NavItem>
           <NavItem to="/profile">Profile</NavItem>
+          <NavItem to="/tacocaco">Tacocaco</NavItem>
           <DarkModeSwitch />
         </Flex>
       </Box>

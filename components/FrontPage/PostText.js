@@ -8,7 +8,8 @@ import {
 } from "@chakra-ui/react";
 
 // home page - single post text
-export default function PostText({ post }) {
+export default function PostText(props) {
+  const { post } = props;
   return (
     <Box
       display="flex"
@@ -22,7 +23,7 @@ export default function PostText({ post }) {
         as="h4"
         size="md"
         color={useColorModeValue("gray.700", "gray.200")}
-        _hover={{ cursor: "pointer" }}
+        _hover={{ textDecoration: "underline", cursor: "pointer" }}
       >
         {post.title}
       </Heading>
