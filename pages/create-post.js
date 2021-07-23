@@ -6,13 +6,6 @@ import { useRouter } from "next/router";
 import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
-import {
-  Text,
-  Input,
-  Button,
-  Container,
-  useDisclosure,
-} from "@chakra-ui/react";
 
 import EmojiModal from "../components/EmojiModal";
 import EmojiSearch from "../components/EmojiSearch";
@@ -23,7 +16,6 @@ const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 function CreatePost() {
-  const { isOpen, onClose, onOpen } = useDisclosure();
   const [post, setPost] = useState(initialState);
   const { title, content, postEmoji } = post;
   const router = useRouter();
@@ -47,49 +39,37 @@ function CreatePost() {
   }
 
   return (
-    <Container maxW="7xl">
-      <EmojiModal onClose={onClose} isOpen={isOpen}>
+    <div>
+      {/* <EmojiModal onClose={onClose} isOpen={isOpen}>
         <EmojiSearch onClose={onClose} onEmojiChange={onEmojiChange} />
-      </EmojiModal>
-      <Text fontSize="3xl" fontWeight="semibold" letterSpacing="wide" mt={6}>
+      </EmojiModal> */}
+      <h1 className="text-3xl font-semibold tracking-wide mt-6">
         Create new post
-      </Text>
-      <Input
-        variant="flushed"
+      </h1>
+      <input
         placeholder="Title"
         name="title"
         onChange={onChange}
         value={post.title}
-        my={3}
-        textColor="gray.500"
-        _placeholder={{ textColor: "gray.500" }}
+        className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
       />
       <SimpleMdeEditor
         value={post.content}
         onChange={(value) => setPost({ ...post, content: value })}
       />
-      <Button
+      {/* <button
         onClick={onOpen}
-        colorScheme="yellow"
-        fontWeight="semibold"
-        px={8}
-        py={2}
+        className="bg-purple-600 text-white font-semibold px-8 py-2 rounded-lg mr-2"
       >
         Add Food Emoji
-      </Button>
-      <Button
-        type="button"
+      </button> */}
+      <button
+        className="mb-4 bg-blue-600 text-white font-semibold px-8 py-2 rounded-lg"
         onClick={createNewPost}
-        colorScheme="blue"
-        textColor="white"
-        fontWeight="semibold"
-        px={8}
-        py={2}
-        mr={2}
       >
         Create Post
-      </Button>
-    </Container>
+      </button>
+    </div>
   );
 }
 

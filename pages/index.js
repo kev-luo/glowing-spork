@@ -41,9 +41,14 @@ export default function Home() {
         return (
           <Link key={index} href={`/posts/${post.id}`} passHref>
             <div className="my-6 pb-6 border-b border-gray-300">
-              <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
               <div className="cursor-pointer mt-2">
-                <h2 className="text-xl font-semibold">{post.title}</h2>
+                <h2 className="text-xl font-semibold">
+                  <PostImage
+                    label={post.postEmojiTitle}
+                    emoji={post.postEmoji}
+                  />
+                  {post.title}
+                </h2>
                 <p className="text-gray-500 mt-2">Author: {post.username}</p>
               </div>
             </div>
