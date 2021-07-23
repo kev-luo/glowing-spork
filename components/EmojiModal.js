@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#__next");
 
-export default function EmojiModal(props) {
+export default function EmojiModal() {
   const [showModal, setShowModal] = useState(false);
   function handleOpenModal() {
     setShowModal(true);
@@ -11,7 +11,6 @@ export default function EmojiModal(props) {
   function handleCloseModal() {
     setShowModal(false);
   }
-  const { children, onClose, isOpen } = props;
   return (
     <div>
       <button onClick={handleOpenModal}>Trigger Modal</button>
