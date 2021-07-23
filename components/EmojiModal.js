@@ -1,27 +1,21 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  Button,
-} from "@chakra-ui/react";
+import { useState } from "react";
+import Modal from "react-modal";
 
 export default function EmojiModal(props) {
+  const [showModal, setShowModal] = useState(false);
+  function handleOpenModal() {
+    setShowModal(true);
+  }
+  function handleCloseModal() {
+    setShowModal(false);
+  }
   const { children, onClose, isOpen } = props;
   return (
-    <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>{children}</ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+    <div>
+      <button onClick={handleOpenModal}>Trigger Modal</button>
+      <Modal isOpen={showModal} contentLabel="Minimal Modal Example">
+        <button onClick={handleCloseModal}>Close Modal</button>
+      </Modal>
+    </div>
   );
 }

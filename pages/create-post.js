@@ -43,6 +43,7 @@ function CreatePost() {
       {/* <EmojiModal onClose={onClose} isOpen={isOpen}>
         <EmojiSearch onClose={onClose} onEmojiChange={onEmojiChange} />
       </EmojiModal> */}
+      <EmojiModal />
       <h1 className="text-3xl font-semibold tracking-wide mt-6">
         Create new post
       </h1>
