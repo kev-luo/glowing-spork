@@ -1,9 +1,9 @@
-import { ChakraProvider } from "@chakra-ui/react";
 import "../configureAmplify";
 import { useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
 
 import Nav from "../components/NavigationBar/Nav";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const [signedInUser, setSignedInUser] = useState(false);
@@ -28,10 +28,12 @@ function MyApp({ Component, pageProps }) {
     }
   }
   return (
-    <ChakraProvider>
+    <div>
       <Nav signedInUser={signedInUser} />
-      <Component {...pageProps} />
-    </ChakraProvider>
+      <div className="py-8 px-16">
+        <Component {...pageProps} />
+      </div>
+    </div>
   );
 }
 

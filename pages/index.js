@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { API, Storage } from "aws-amplify";
-import { Container, Heading, Box } from "@chakra-ui/react";
 import { listPosts } from "../src/graphql/queries";
-import PostText from "../components/FrontPage/PostText";
 import PostImage from "../components/FrontPage/PostImage";
 
 export default function Home() {
@@ -36,24 +34,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxW="7xl" p={12}>
-        <Heading as="h1">Stories by Danno</Heading>
-        {posts.map((post, index) => {
-          return (
-            <Link key={index} href={`/posts/${post.id}`} passHref>
-              <Box
-                mt={{ base: "1", sm: "5" }}
-                display="flex"
-                flexDir={{ base: "column", sm: "row" }}
-                justifyContent="space-between"
-              >
-                <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
-                <PostText post={post} />
-              </Box>
-            </Link>
-          );
-        })}
-      </Container>
+      <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-8">
+        Stories by Danno
+      </h1>
+      {posts.map((post, index) => {
+        return (
+          <Link key={index} href={`/posts/${post.id}`} passHref>
+            <div className="my-6 pb-6 border-b border-gray-300">
+              <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
+              <div className="cursor-pointer mt-2">
+                <h2 className="text-xl font-semibold">{post.title}</h2>
+                <p className="text-gray-500 mt-2">Author: {post.username}</p>
+              </div>
+            </div>
+          </Link>
+        );
+      })}
 
       <footer>
         <span></span>

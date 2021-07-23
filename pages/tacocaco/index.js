@@ -1,15 +1,46 @@
 import { Box } from "@chakra-ui/react";
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
 import WheelButton from "../../components/WheelButton";
 
 const OFFSET = Math.random();
+
+const map = function (value, in_min, in_max, out_min, out_max) {
+  console.log(value);
+  console.log(
+    ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+  );
+  if (value === 0) {
+    console.log("00000");
+    return out_min;
+  }
+  return ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+};
+
 export default function Tacocaco() {
   const r = 200;
   const cx = 250;
   const cy = 250;
-  const rederItems = (numOfItems) => {
+  const [power, setPower] = useState(0);
+  const [acc, setAcc] = useState(0);
+  const config = { mass: 50, tension: 200, friction: 200, precision: 0.001 };
+  const [props, set] = useSpring(() => ({
+    transform: "rotate(0deg)",
+    immediate: false,
+  }));
+
+  useEffect(() => {
+    set({
+      from: { transform: `rotate(${map(acc, 0, 100, 0, 700)}deg)` },
+      transform: `rotate(${map(acc + power, 0, 100, 0, 700)}deg)`,
+      immediate: false,
+      config,
+    });
+    setAcc(acc + power);
+  }, [power]);
+
+  const renderItems = (numOfItems) => {
     let items = [];
     for (let i = 0; i < numOfItems; i++) {
       let xLength = Math.cos(2 * Math.PI * (i / numOfItems + OFFSET)) * (r - 5);
@@ -54,7 +85,14 @@ export default function Tacocaco() {
         <g fill="white" stroke="green" strokeWidth="10">
           <circle cx="250" cy="250" r={r} />
         </g>
-        <g>{rederItems(12)}</g>
+        <animated.g
+          style={{
+            transform: props.transform,
+            transformOrigin: "center",
+          }}
+        >
+          {renderItems(12)}
+        </animated.g>
         <g fill="#61DAFB">
           <circle cx="250" cy="250" r="15" />
         </g>
@@ -65,7 +103,7 @@ export default function Tacocaco() {
           <polygon points="250,70 230,30 270,30" />
         </g>
       </svg>
-      <WheelButton />
+      <WheelButton setPower={setPower} style={{ height: "20vh" }} />
     </div>
   );
 }

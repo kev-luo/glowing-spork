@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 import { Button } from "@chakra-ui/react";
 
-export default function WheelButton() {
+export default function WheelButton({ setPower }) {
   const [pressed, toggle] = useState(false);
-  const [props, set] = useSpring(() => ({
+  const [width, setWidth] = useState(0);
+  const [styles, set] = useSpring(() => ({
     width: "0%",
     backgroundColor: "hotpink",
   }));
@@ -17,6 +18,7 @@ export default function WheelButton() {
         config: { duration: 2000 },
       });
     else {
+      setPower(parseInt(width));
       set({ to: { width: "0%", backgroundColor: "hotpink" }, immediate: true });
     }
   }, [pressed]);
@@ -37,15 +39,12 @@ export default function WheelButton() {
         toggle(!pressed);
       }}
     >
-      <animated.div
-        className="fill"
-        style={{
-          width: props.width,
-          background: "blue",
-        }}
-      />
+      <animated.div className="fill" style={styles} />
       <animated.div className="content">
         {props.width.to((x) => {
+          {
+            /* setWidth(parseInt(x)); */
+          }
           return x === "0%" ? "Press me!" : parseInt(x) + "%";
         })}
       </animated.div>
