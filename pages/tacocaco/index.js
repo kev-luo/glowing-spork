@@ -28,7 +28,11 @@ export default function Tacocaco() {
     });
   }
 
-  function styleName(name) {}
+  function styleName(name) {
+    const removeBaseDir = name.split("/")[1];
+    const displayName = removeBaseDir.split(".")[0];
+    return displayName;
+  }
 
   return (
     <div className="grid grid-cols-3 mt-4 gap-1 md:gap-6 -mx-4 md:mx-0">
@@ -39,7 +43,7 @@ export default function Tacocaco() {
               key={video.key}
               onClick={() => handleActiveVideoInfo(video.key)}
             >
-              {video.key}
+              {styleName(video.key)}
             </button>
           );
         })}

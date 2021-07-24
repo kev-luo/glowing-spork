@@ -4,35 +4,40 @@ import VideoJs from "video.js";
 
 const videoJsOptions = {
   // techOrder: ['html5', 'flash'],
-  controls: false,
-  autoplay: true,
-  //   responsive: true,
-  //   fluid: true,
+  controls: true,
+  autoplay: false,
+  aspectRatio: "4:3",
+  responsive: true,
+  fluid: true,
   loop: false,
+  breakpoints: {
+    tiny: 300,
+    xsmall: 400,
+    small: 500,
+    medium: 600,
+    large: 700,
+    xlarge: 800,
+    huge: 900,
+  },
 };
 
 export default function VideoPlayer({ fileKey }) {
-  const videoRef = useRef();
-
+  const videoRef = useRef(null);
+  const VideoHtml = () => (
+    <div data-vjs-player>
+      <video ref={videoRef} className="video-js vjs-big-play-centered" />
+    </div>
+  );
   //  Setup the player
   useEffect(() => {
-    //  Setting content like this because player.dispose() remove also the html content
-    videoRef.current.innerHTML = `
-        <div data-vjs-player>
-          <video class="video-js" />
-        </div>
-      `;
+    const videoElement = videoRef.current;
     let player;
-    if (videoRef.current) {
-      player = VideoJs(
-        videoRef.current.querySelector("video"),
-        videoJsOptions,
-        async () => {
-          const url = await Storage.get(fileKey);
-          // Storage.get generates a signed url
-          player.src({ src: url, type: "video/mp4" });
-        }
-      );
+    if (videoElement) {
+      player = VideoJs(videoElement, videoJsOptions, async () => {
+        const url = await Storage.get(fileKey);
+        // Storage.get generates a signed url
+        player.src({ src: url, type: "video/mp4" });
+      });
     }
 
     //  When destruct dispose the player
@@ -43,5 +48,5 @@ export default function VideoPlayer({ fileKey }) {
     };
   }, [fileKey]);
 
-  return <div ref={videoRef} />;
+  return <VideoHtml />;
 }
