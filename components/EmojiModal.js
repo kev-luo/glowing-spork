@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import EmojiSearch from "./EmojiSearch";
 
 Modal.setAppElement("#__next");
 
@@ -20,6 +21,7 @@ export default function EmojiModal() {
         onRequestClose={handleCloseModal}
         shouldCloseOnOverlayClick={true}
       >
+        <EmojiSearch />
         <button onClick={handleCloseModal}>Close Modal</button>
       </Modal>
     </div>
