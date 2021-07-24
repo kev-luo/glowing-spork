@@ -35,13 +35,14 @@ export default function Tacocaco() {
   }
 
   return (
-    <div className="grid grid-cols-3 mt-4 gap-1 md:gap-6 -mx-4 md:mx-0">
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {videoList &&
         videoList.map((video) => {
           return (
             <button
-              key={video.key}
+              className="px-10 py-20 text-center transition duration-300 transform bg-gray-900 rounded shadow-2xl hover:scale-105 md:shadow-xl hover:shadow-2xl font-semibold text-gray-200"
               onClick={() => handleActiveVideoInfo(video.key)}
+              key={video.key}
             >
               {styleName(video.key)}
             </button>
