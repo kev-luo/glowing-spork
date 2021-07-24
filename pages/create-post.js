@@ -9,6 +9,7 @@ import "easymde/dist/easymde.min.css";
 
 import EmojiModal from "../components/EmojiModal";
 import EmojiSearch from "../components/EmojiSearch";
+import Popover from "../components/Popover";
 
 const initialState = { title: "", content: "", postEmoji: "" };
 
@@ -44,6 +45,7 @@ function CreatePost() {
         <EmojiSearch onClose={onClose} onEmojiChange={onEmojiChange} />
       </EmojiModal> */}
       <EmojiModal />
+      <Popover color="blue" />
       <h1 className="text-3xl font-semibold tracking-wide mt-6">
         Create new post
       </h1>
