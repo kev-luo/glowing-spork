@@ -9,7 +9,7 @@ export default function NavItem(props) {
   const isActive = router.pathname === to;
   return (
     <Link href={to} passHref>
-      <span className="mr-6 cursor-pointer">{children}</span>
+      {children}
     </Link>
   );
 }

@@ -24,7 +24,8 @@
     "react-markdown": "^6.0.2",
     "react-modal": "^3.14.3",
     "react-simplemde-editor": "^5.0.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "video.js": "^7.13.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.1",
