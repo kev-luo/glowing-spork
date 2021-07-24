@@ -1,35 +1,47 @@
-import React from "react";
+import { useRef, useEffect } from "react";
+import { Storage } from "aws-amplify";
+import VideoJs from "video.js";
 
-export default function VideoPlayer({ fileKey, fileType }) {
-  const videoContainer = useRef();
+const videoJsOptions = {
+  // techOrder: ['html5', 'flash'],
+  controls: false,
+  autoplay: true,
+  //   responsive: true,
+  //   fluid: true,
+  loop: false,
+};
+
+export default function VideoPlayer({ fileKey }) {
+  const videoRef = useRef();
 
   //  Setup the player
   useEffect(() => {
     //  Setting content like this because player.dispose() remove also the html content
-    videoContainer.current.innerHTML = `
+    videoRef.current.innerHTML = `
         <div data-vjs-player>
           <video class="video-js" />
         </div>
       `;
-
-    //  Setting logger level to all for dev
-    if (process.env.NODE_ENV === "development") {
-      VideoJs.log("all");
+    let player;
+    if (videoRef.current) {
+      player = VideoJs(
+        videoRef.current.querySelector("video"),
+        videoJsOptions,
+        async () => {
+          const url = await Storage.get(fileKey);
+          // Storage.get generates a signed url
+          player.src({ src: url, type: "video/mp4" });
+        }
+      );
     }
 
-    const player = VideoJs(
-      videoContainer.current.querySelector("video"),
-      videoJsOptions,
-      async () => {
-        logger.debug(`Version of video.js is ${VideoJs.VERSION}`);
-        const url = await Storage.get(fileKey, { level: "protected" }); // Storage.get generates a signed url
-        player.src({ src: url, type: fileType });
-      }
-    );
-
     //  When destruct dispose the player
-    return () => player.dispose();
-  }, [fileKey, fileType]);
+    return () => {
+      if (player) {
+        player.dispose();
+      }
+    };
+  }, [fileKey]);
 
-  return <div ref={videoContainer} />;
+  return <div ref={videoRef} />;
 }
