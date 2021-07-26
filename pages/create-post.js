@@ -7,7 +7,6 @@ import { createPost } from "../src/graphql/mutations";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
 
-import EmojiModal from "../components/EmojiModal";
 import EmojiSearch from "../components/EmojiSearch";
 import Wrapper from "../components/Wrapper";
 
@@ -41,7 +40,7 @@ function CreatePost() {
 
   return (
     <Wrapper>
-      <EmojiModal />
+      <EmojiSearch onEmojiChange={onEmojiChange} />
       <h1 className="text-3xl font-semibold tracking-wide mt-6">
         Create new post
       </h1>
