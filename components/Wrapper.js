@@ -2,7 +2,12 @@ import { mergeClasses } from "../lib/utils";
 
 export default function Wrapper({ children, className }) {
   return (
-    <div className={mergeClasses("max-w-4xl mx-auto p-4", className)}>
+    <div
+      className={mergeClasses(
+        "mx-auto p-4 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8",
+        className
+      )}
+    >
       {children}
     </div>
   );
