@@ -3,7 +3,7 @@ import { Auth } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import StatsCard from "../components/StatsCard";
+import Wrapper from "../components/Wrapper";
 
 function Profile() {
   const router = useRouter();
@@ -25,7 +25,7 @@ function Profile() {
   }
   if (!user) return null;
   return (
-    <div className="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100">
+    <Wrapper>
       <div className="max-w-7xl w-full mx-auto py-6 sm:px-6 lg:px-8">
         <h1>Tell me about myself</h1>
         <div className="flex flex-col lg:flex-row w-full lg:space-x-2 space-y-2 lg:space-y-0 mb-2 lg:mb-4">
@@ -96,7 +96,7 @@ function Profile() {
         </div>
         <button onClick={signOut}>Sign Out</button>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
