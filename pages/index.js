@@ -25,7 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-8">
+      <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-8 dark:text-white">
         The Good Stuff
       </h1>
       <ul className="mb-8">

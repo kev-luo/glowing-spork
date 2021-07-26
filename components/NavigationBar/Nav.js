@@ -1,5 +1,6 @@
 import Logo from "../SVG/Logo";
 import NavItem from "./NavItem";
+import ThemeToggle from "../ThemeToggle";
 
 // navbar container
 export default function Nav(props) {
@@ -25,6 +26,7 @@ export default function Nav(props) {
       <div className="flex-initial">
         <div className="flex justify-end items-center relative">
           <div className="flex mr-4 items-center">
+            <ThemeToggle />
             <a className="inline-block py-2 px-3 hover:bg-gray-200 rounded-full">
               <div className="flex items-center relative cursor-pointer whitespace-nowrap">
                 <NavItem to="/">Home</NavItem>

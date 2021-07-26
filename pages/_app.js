@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
 
 import Nav from "../components/NavigationBar/Nav";
+import { ThemeProvider } from "../components/themeContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -29,10 +30,12 @@ function MyApp({ Component, pageProps }) {
   }
   return (
     <div>
-      <Nav signedInUser={signedInUser} />
-      <div className="py-8 px-16">
-        <Component {...pageProps} />
-      </div>
+      <ThemeProvider>
+        <Nav signedInUser={signedInUser} />
+        <div className="py-8 px-16">
+          <Component {...pageProps} />
+        </div>
+      </ThemeProvider>
     </div>
   );
 }
