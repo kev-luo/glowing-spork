@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
     <div>
       <ThemeProvider>
         <Nav signedInUser={signedInUser} />
-        <div className="py-8 px-16">
+        <div>
           <Component {...pageProps} />
         </div>
       </ThemeProvider>

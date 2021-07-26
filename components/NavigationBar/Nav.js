@@ -26,7 +26,6 @@ export default function Nav(props) {
       <div className="flex-initial">
         <div className="flex justify-end items-center relative">
           <div className="flex mr-4 items-center">
-            <ThemeToggle />
             <a className="inline-block py-2 px-3 hover:bg-gray-200 rounded-full">
               <div className="flex items-center relative cursor-pointer whitespace-nowrap">
                 <NavItem to="/">Home</NavItem>
@@ -49,6 +48,9 @@ export default function Nav(props) {
             </a>
           </div>
         </div>
+      </div>
+      <div className="absolute right-0 top-0 mr-4 mt-6">
+        <ThemeToggle />
       </div>
     </nav>
   );

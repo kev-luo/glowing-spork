@@ -9,6 +9,7 @@ import "easymde/dist/easymde.min.css";
 
 import EmojiModal from "../components/EmojiModal";
 import EmojiSearch from "../components/EmojiSearch";
+import Wrapper from "../components/Wrapper";
 
 const initialState = { title: "", content: "", postEmoji: "" };
 
@@ -39,7 +40,7 @@ function CreatePost() {
   }
 
   return (
-    <div>
+    <Wrapper>
       <EmojiModal />
       <h1 className="text-3xl font-semibold tracking-wide mt-6">
         Create new post
@@ -67,7 +68,7 @@ function CreatePost() {
       >
         Create Post
       </button>
-    </div>
+    </Wrapper>
   );
 }
 
