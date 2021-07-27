@@ -17,7 +17,7 @@ const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
 });
 function CreatePost() {
   const [post, setPost] = useState(initialState);
-  const { title, content, postEmoji } = post;
+  const { title, content } = post;
   const router = useRouter();
   function onChange(e) {
     setPost(() => ({ ...post, [e.target.name]: e.target.value }));
@@ -55,12 +55,6 @@ function CreatePost() {
         value={post.content}
         onChange={(value) => setPost({ ...post, content: value })}
       />
-      {/* <button
-        onClick={onOpen}
-        className="bg-purple-600 text-white font-semibold px-8 py-2 rounded-lg mr-2"
-      >
-        Add Food Emoji
-      </button> */}
       <button
         className="mb-4 bg-blue-600 text-white font-semibold px-8 py-2 rounded-lg"
         onClick={createNewPost}

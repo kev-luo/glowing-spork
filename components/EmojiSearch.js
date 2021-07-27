@@ -4,9 +4,7 @@ import SearchIcon from "./SVG/SearchIcon";
 
 export default function EmojiSearch(props) {
   const { onEmojiChange } = props;
-  const initialState = [
-    { symbol: "🔎", title: "Search Emojis", keywords: ["search"] },
-  ];
+  const initialState = [{ symbol: "", title: "search", keywords: [""] }];
   const [emojiList, setEmojiList] = useState(initialState);
   const [searchState, setSearchState] = useState("");
 
@@ -45,11 +43,12 @@ export default function EmojiSearch(props) {
       });
   }, []);
 
-  function selectEmoji(evt) {
-    const emoji = evt.target.childNodes[0].data;
-    const emojiTitle = evt.target.innerText.slice(2);
-    if (emojiTitle !== "Search Emojis") {
-      onEmojiChange(emoji, emojiTitle);
+  function selectEmoji(emoji) {
+    const { title, symbol } = emoji;
+    if (title !== "") {
+      onEmojiChange(symbol, title);
+      setSearchState("");
+      console.log(title);
     }
   }
 
@@ -65,24 +64,25 @@ export default function EmojiSearch(props) {
           className="w-full py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
           placeholder="Emoji Search"
           name="emoji"
+          value={searchState}
           onChange={(e) => handleChange(e)}
         />
       </div>
-      {emojiList.title != "Search Emojis" && searchState != "" && (
+      {searchState != "" && (
         <div className="absolute inset-x-0 px-6 py-3 mx-5 mt-4 overflow-y-auto bg-white border border-gray-300 rounded-md max-h-72 dark:bg-gray-800 dark:border-transparent">
           <div className="flex">
             {filteredEmojis?.length > 0 ? (
               filteredEmojis.map((emoji, index) => {
                 return (
-                  <div key={index} onClick={(emoji) => selectEmoji(emoji)}>
+                  <button key={index} onClick={() => selectEmoji(emoji)}>
                     <span className="p-1 shadow-none cursor-pointer hover:shadow-inner rounded">
                       {emoji.symbol}
                     </span>
-                  </div>
+                  </button>
                 );
               })
             ) : (
-              <li>No matches</li>
+              <div>No matches</div>
             )}
           </div>
         </div>
