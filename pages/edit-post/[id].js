@@ -5,6 +5,7 @@ import { updatePost } from "../../src/graphql/mutations";
 import { getPost } from "../../src/graphql/queries";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
+import Wrapper from "../../components/Wrapper";
 
 const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
@@ -45,7 +46,7 @@ function EditPost() {
     router.push("/");
   }
   return (
-    <div>
+    <Wrapper>
       <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-2">
         Edit post
       </h1>
@@ -66,7 +67,7 @@ function EditPost() {
       >
         Update Post
       </button>
-    </div>
+    </Wrapper>
   );
 }
 

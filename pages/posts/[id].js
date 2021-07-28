@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 
 import { listPosts, getPost } from "../../src/graphql/queries";
+import Wrapper from "../../components/Wrapper";
 
 export default function Post(props) {
   const { post } = props;
@@ -12,7 +13,7 @@ export default function Post(props) {
     return <div>Loading...</div>;
   }
   return (
-    <div>
+    <Wrapper>
       <h1 className="text-5xl mt-4 font-semibold tracking-wide">
         {post.title}
       </h1>
@@ -20,7 +21,7 @@ export default function Post(props) {
       <div className="mt-8">
         <ReactMarkdown className="prose">{post.content}</ReactMarkdown>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
