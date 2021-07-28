@@ -4,6 +4,7 @@ export default function PostImage(props) {
   return (
     <span
       role="img"
+      className="text-2xl"
       aria-label={label ? label : ""}
       aria-hidden={label ? "false" : "true"}
     >

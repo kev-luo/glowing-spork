@@ -25,14 +25,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-8 dark:text-white">
+      <h1 className="text-3xl font-semibold tracking-wide mt-6 dark:text-white">
         The Good Stuff
       </h1>
-      <ul className="mb-8">
-        {posts.map((post, index) => (
-          <PostItem key={index} post={post} />
-        ))}
-      </ul>
+      <section className="text-gray-600 body-font overflow-hidden">
+        <div className="container px-5 py-16 mx-auto">
+          <div className="-my-8 divide-y-2 divide-gray-100">
+            {posts.map((post, index) => (
+              <PostItem key={index} post={post} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <footer>
         <span></span>
       </footer>

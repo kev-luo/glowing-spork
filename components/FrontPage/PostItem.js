@@ -3,26 +3,20 @@ import PostImage from "./PostImage";
 export default function PostItem(props) {
   const { post } = props;
   return (
-    <div className="max-w-screen-lg sm:mx-auto">
-      <a
-        href={`/posts/${post.id}`}
-        aria-label=""
-        className="flex flex-col justify-between items-start py-4 transition duration-300 transform rounded sm:px-4 sm:flex-row sm:hover:translate-x-4 sm:hover:bg-blue-gray-50"
-      >
-        <div className="mb-4 lg:mb-0">
-          <h5 className="text-xl font-bold leading-none sm:text-2xl dark:text-white">
-            {post.title}
-          </h5>
-          <div className="relative pr-8">
-            <p className="text-sm text-gray-500">{post.username}</p>
-          </div>
-        </div>
-        <div className="flex justify-start w-56 sm:justify-end">
-          <div className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">
-            <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
-          </div>
-        </div>
-      </a>
-    </div>
+    <a
+      href={`/posts/${post.id}`}
+      className="py-8 flex flex-wrap md:flex-nowrap transition duration-300 transform sm:hover:translate-x-4 sm:hover:bg-blue-gray-50"
+    >
+      <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+        <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
+        <span className="mt- text-gray-500 text-sm">12 Jun 2019</span>
+      </div>
+      <div className="md:flex-grow">
+        <h2 className="text-2xl font-medium text-gray-900 title-font mb-1">
+          {post.title}
+        </h2>
+        <p className="text-gray-500">{post.username}</p>
+      </div>
+    </a>
   );
 }

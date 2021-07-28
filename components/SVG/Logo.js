@@ -3,8 +3,8 @@ export default function Logo() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 438.053 438.053"
-      width={30}
-      height={32}
+      width={37.5}
+      height={40}
       style={{ display: "block" }}
     >
       <path
