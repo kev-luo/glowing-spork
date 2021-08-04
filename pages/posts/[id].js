@@ -12,7 +12,7 @@ export default function Post(props) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  const blogImage = (props) => {
+  const postImg = (props) => {
     return <img {...props} style={{ maxWidth: 475 }} />;
   };
 
@@ -24,11 +24,7 @@ export default function Post(props) {
       <p className="text-sm font-light my-4">by {post.username}</p>
       <a href={`/edit-post/${post.id}`}>Edit Post</a>
       <div className="mt-8">
-        <ReactMarkdown
-          className="prose"
-          //   source={post.content}
-          components={{ img: blogImage }}
-        >
+        <ReactMarkdown className="prose" components={{ img: postImg }}>
           {post.content}
         </ReactMarkdown>
       </div>

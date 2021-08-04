@@ -10,20 +10,9 @@ export const getPost = /* GraphQL */ `
       username
       postEmoji
       postEmojiTitle
-      tags
+      type
       createdAt
       updatedAt
-      comments {
-        items {
-          id
-          postID
-          content
-          username
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
     }
   }
 `;
@@ -41,12 +30,9 @@ export const listPosts = /* GraphQL */ `
         username
         postEmoji
         postEmojiTitle
-        tags
+        type
         createdAt
         updatedAt
-        comments {
-          nextToken
-        }
       }
       nextToken
     }
@@ -74,12 +60,9 @@ export const postsByUsername = /* GraphQL */ `
         username
         postEmoji
         postEmojiTitle
-        tags
+        type
         createdAt
         updatedAt
-        comments {
-          nextToken
-        }
       }
       nextToken
     }
@@ -107,68 +90,41 @@ export const postsByEmojiTitle = /* GraphQL */ `
         username
         postEmoji
         postEmojiTitle
-        tags
+        type
         createdAt
         updatedAt
-        comments {
-          nextToken
-        }
       }
       nextToken
     }
   }
 `;
-export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
-      id
-      postID
-      content
-      username
-      createdAt
-      updatedAt
-      post {
+export const postsByDate = /* GraphQL */ `
+  query PostsByDate(
+    $type: String
+    $createdAt: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    postsByDate(
+      type: $type
+      createdAt: $createdAt
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
         id
         title
         content
         username
         postEmoji
         postEmojiTitle
-        tags
+        type
         createdAt
         updatedAt
-        comments {
-          nextToken
-        }
-      }
-    }
-  }
-`;
-export const listComments = /* GraphQL */ `
-  query ListComments(
-    $filter: ModelCommentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        postID
-        content
-        username
-        createdAt
-        updatedAt
-        post {
-          id
-          title
-          content
-          username
-          postEmoji
-          postEmojiTitle
-          tags
-          createdAt
-          updatedAt
-        }
       }
       nextToken
     }

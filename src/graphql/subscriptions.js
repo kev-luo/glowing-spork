@@ -10,20 +10,9 @@ export const onCreatePost = /* GraphQL */ `
       username
       postEmoji
       postEmojiTitle
-      tags
+      type
       createdAt
       updatedAt
-      comments {
-        items {
-          id
-          postID
-          content
-          username
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
     }
   }
 `;
@@ -36,20 +25,9 @@ export const onUpdatePost = /* GraphQL */ `
       username
       postEmoji
       postEmojiTitle
-      tags
+      type
       createdAt
       updatedAt
-      comments {
-        items {
-          id
-          postID
-          content
-          username
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
     }
   }
 `;
@@ -62,98 +40,9 @@ export const onDeletePost = /* GraphQL */ `
       username
       postEmoji
       postEmojiTitle
-      tags
+      type
       createdAt
       updatedAt
-      comments {
-        items {
-          id
-          postID
-          content
-          username
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment($username: String) {
-    onCreateComment(username: $username) {
-      id
-      postID
-      content
-      username
-      createdAt
-      updatedAt
-      post {
-        id
-        title
-        content
-        username
-        postEmoji
-        postEmojiTitle
-        tags
-        createdAt
-        updatedAt
-        comments {
-          nextToken
-        }
-      }
-    }
-  }
-`;
-export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment($username: String) {
-    onUpdateComment(username: $username) {
-      id
-      postID
-      content
-      username
-      createdAt
-      updatedAt
-      post {
-        id
-        title
-        content
-        username
-        postEmoji
-        postEmojiTitle
-        tags
-        createdAt
-        updatedAt
-        comments {
-          nextToken
-        }
-      }
-    }
-  }
-`;
-export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment($username: String) {
-    onDeleteComment(username: $username) {
-      id
-      postID
-      content
-      username
-      createdAt
-      updatedAt
-      post {
-        id
-        title
-        content
-        username
-        postEmoji
-        postEmojiTitle
-        tags
-        createdAt
-        updatedAt
-        comments {
-          nextToken
-        }
-      }
     }
   }
 `;

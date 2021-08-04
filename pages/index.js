@@ -1,27 +1,25 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import { API, Auth } from "aws-amplify";
-import { listPosts } from "../src/graphql/queries";
+import { API, graphqlOperation } from "aws-amplify";
+import { postsByDate } from "../src/graphql/queries";
 import Wrapper from "../components/Wrapper";
 import PostItem from "../components/FrontPage/PostItem";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState(null);
   useEffect(() => {
     fetchPosts();
-    checkUser();
   }, []);
   async function fetchPosts() {
-    const postData = await API.graphql({
-      query: listPosts,
-    });
-    const { items } = postData.data.listPosts;
+    const postData = await API.graphql(
+      graphqlOperation(postsByDate, {
+        type: "post",
+        sortDirection: "DESC",
+        limit: 10,
+      })
+    );
+    const { items } = postData.data.postsByDate;
     setPosts(items);
-  }
-  async function checkUser() {
-    const user = await Auth.currentAuthenticatedUser();
-    setUser(user);
   }
   return (
     <Wrapper>
