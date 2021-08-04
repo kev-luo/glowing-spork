@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import { listPosts } from "../src/graphql/queries";
 import Wrapper from "../components/Wrapper";
 import PostItem from "../components/FrontPage/PostItem";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null);
   useEffect(() => {
     fetchPosts();
+    checkUser();
   }, []);
   async function fetchPosts() {
     const postData = await API.graphql({
@@ -16,6 +18,10 @@ export default function Home() {
     });
     const { items } = postData.data.listPosts;
     setPosts(items);
+  }
+  async function checkUser() {
+    const user = await Auth.currentAuthenticatedUser();
+    setUser(user);
   }
   return (
     <Wrapper>

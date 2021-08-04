@@ -18,6 +18,7 @@ export default function Post(props) {
         {post.title}
       </h1>
       <p className="text-sm font-light my-4">by {post.username}</p>
+      <a href={`/edit-post/${post.id}`}>Edit Post</a>
       <div className="mt-8">
         <ReactMarkdown className="prose">{post.content}</ReactMarkdown>
       </div>
