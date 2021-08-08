@@ -10,7 +10,6 @@ import Head from "next/head";
 
 import EmojiSearch from "../components/EmojiSearch";
 import Wrapper from "../components/Wrapper";
-import PostImage from "../components/FrontPage/PostImage";
 
 const initialState = { title: "", content: "", postEmoji: "", type: "post" };
 
@@ -48,9 +47,6 @@ function CreatePost() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <EmojiSearch onEmojiChange={onEmojiChange} post={post} />
-      {post.postEmoji && (
-        <PostImage label={post.title} emoji={post.postEmoji} />
-      )}
       <h1 className="text-3xl font-semibold tracking-wide mt-6">
         Create new post
       </h1>
