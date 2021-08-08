@@ -99,7 +99,7 @@ export default function EmojiSearch(props) {
       ) : (
         <div>
           <PostImage label={post.title} emoji={post.postEmoji} />
-          <CloseButton />
+          <CloseButton onEmojiChange={onEmojiChange} />
         </div>
       )}
     </>

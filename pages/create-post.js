@@ -11,7 +11,13 @@ import Head from "next/head";
 import EmojiSearch from "../components/EmojiSearch";
 import Wrapper from "../components/Wrapper";
 
-const initialState = { title: "", content: "", postEmoji: "", type: "post" };
+const initialState = {
+  title: "",
+  content: "",
+  postEmoji: "",
+  postEmojiTitle: "",
+  type: "post",
+};
 
 const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
