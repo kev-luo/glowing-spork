@@ -14,6 +14,7 @@ function Profile() {
   }, []);
   async function checkUser() {
     const user = await Auth.currentAuthenticatedUser();
+    console.log(user);
     setUser(user);
   }
   async function signOut() {
@@ -43,46 +44,52 @@ function Profile() {
               gentrify, subway tile poke farm-to-table.
             </p>
           </div>
-          <div className="flex flex-wrap -m-4 text-center justify-around">
-            <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-              <div className="px-4 py-6">
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="text-purple-500 w-12 h-12 mb-3 inline-block"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 17l4 4 4-4m-4-5v9"></path>
-                  <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
-                </svg>
-                <h2 className="title-font font-medium text-3xl text-gray-900">
-                  {user.username}
-                </h2>
-                <p className="leading-relaxed">Username</p>
-              </div>
+          <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-coolGray-900 dark:text-coolGray-100">
+            <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
+              {/* <img
+                src="https://source.unsplash.com/100x100/?portrait"
+                alt=""
+                className="object-cover object-center w-full h-full rounded"
+              /> */}
             </div>
-            <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-              <div className="px-4 py-6">
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="text-purple-500 w-12 h-12 mb-3 inline-block"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
-                </svg>
-                <h2 className="title-font font-medium text-3xl text-gray-900">
-                  {user.attributes.email}
-                </h2>
-                <p className="leading-relaxed">Email</p>
+            <div className="flex flex-col space-y-4">
+              <div>
+                <h2 className="text-2xl font-semibold">{user.username}</h2>
+                <span className="text-sm dark:text-coolGray-400">
+                  Generic Description
+                </span>
+              </div>
+              <div className="space-y-1">
+                <span className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    aria-label="Email address"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M274.6,25.623a32.006,32.006,0,0,0-37.2,0L16,183.766V496H496V183.766ZM464,402.693,339.97,322.96,464,226.492ZM256,51.662,454.429,193.4,311.434,304.615,256,268.979l-55.434,35.636L57.571,193.4ZM48,226.492,172.03,322.96,48,402.693ZM464,464H48V440.735L256,307.021,464,440.735Z"
+                    ></path>
+                  </svg>
+                  <span className="dark:text-coolGray-400">
+                    {user.attributes.email}
+                  </span>
+                </span>
+                <span className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    aria-label="Phonenumber"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M449.366,89.648l-.685-.428L362.088,46.559,268.625,171.176l43,57.337a88.529,88.529,0,0,1-83.115,83.114l-57.336-43L46.558,362.088l42.306,85.869.356.725.429.684a25.085,25.085,0,0,0,21.393,11.857h22.344A327.836,327.836,0,0,0,461.222,133.386V111.041A25.084,25.084,0,0,0,449.366,89.648Zm-20.144,43.738c0,163.125-132.712,295.837-295.836,295.837h-18.08L87,371.76l84.18-63.135,46.867,35.149h5.333a120.535,120.535,0,0,0,120.4-120.4v-5.333l-35.149-46.866L371.759,87l57.463,28.311Z"
+                    ></path>
+                  </svg>
+                  <span className="dark:text-coolGray-400">+25 381 77 983</span>
+                </span>
               </div>
             </div>
           </div>

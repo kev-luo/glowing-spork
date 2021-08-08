@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import SearchIcon from "./SVG/SearchIcon";
 
 export default function EmojiSearch(props) {
-  const { onEmojiChange } = props;
+  const { onEmojiChange, post } = props;
   const initialState = [{ symbol: "", title: "search", keywords: [""] }];
   const [emojiList, setEmojiList] = useState(initialState);
   const [searchState, setSearchState] = useState("");
@@ -53,7 +53,11 @@ export default function EmojiSearch(props) {
   }
 
   return (
-    <section className="relative w-full max-w-md rounded-md">
+    <section
+      className={`${
+        post.postEmoji ? "hidden" : "block"
+      } relative w-full max-w-md rounded-md`}
+    >
       <div className="relative">
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
           <SearchIcon />
