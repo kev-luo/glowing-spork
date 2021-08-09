@@ -29,14 +29,14 @@ function MyApp({ Component, pageProps }) {
     }
   }
   return (
-    <div>
+    <>
       <ThemeProvider>
         <Navbar />
         <div>
           <Component {...pageProps} />
         </div>
       </ThemeProvider>
-    </div>
+    </>
   );
 }
 
