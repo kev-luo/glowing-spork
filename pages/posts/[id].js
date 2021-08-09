@@ -22,7 +22,12 @@ export default function Post(props) {
         {post.title}
       </h1>
       <p className="text-sm font-light my-4">by {post.username}</p>
-      <a href={`/edit-post/${post.id}`}>Edit Post</a>
+      <a
+        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        href={`/edit-post/${post.id}`}
+      >
+        Edit Post
+      </a>
       <div className="mt-8">
         <ReactMarkdown className="prose" components={{ img: postImg }}>
           {post.content}
