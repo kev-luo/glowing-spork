@@ -6,6 +6,7 @@ import { getPost } from "../../src/graphql/queries";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
 import Wrapper from "../../components/Wrapper";
+import EmojiSearch from "../../components/EmojiSearch";
 
 const SimpleMdeEditor = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
@@ -15,6 +16,10 @@ function EditPost() {
   const [post, setPost] = useState(null);
   const router = useRouter();
   const { id } = router.query;
+
+  function onEmojiChange(emoji, emojiTitle) {
+    setPost(() => ({ ...post, postEmoji: emoji, postEmojiTitle: emojiTitle }));
+  }
 
   useEffect(() => {
     fetchPost();
@@ -50,6 +55,7 @@ function EditPost() {
       <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-2">
         Edit post
       </h1>
+      <EmojiSearch onEmojiChange={onEmojiChange} post={post} />
       <input
         onChange={onChange}
         name="title"
