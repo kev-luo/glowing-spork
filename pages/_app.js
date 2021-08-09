@@ -2,7 +2,7 @@ import "../configureAmplify";
 import { useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
 
-import Nav from "../components/NavigationBar/Nav";
+import Navbar from "../components/NavigationBar/Navbar";
 import { ThemeProvider } from "../components/themeContext";
 import "../styles/globals.css";
 
@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <ThemeProvider>
-        <Nav signedInUser={signedInUser} />
+        <Navbar />
         <div>
           <Component {...pageProps} />
         </div>
