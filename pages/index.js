@@ -32,12 +32,10 @@ export default function Home() {
         The Good Stuff
       </h1>
       <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container px-5 py-16 mx-auto">
-          <div className="-my-8 divide-y-2 divide-gray-100">
-            {posts.map((post, index) => (
-              <PostItem key={index} post={post} />
-            ))}
-          </div>
+        <div className="divide-y divide-gray-200 dark:divide-gray-700">
+          {posts.map((post, index) => (
+            <PostItem key={index} post={post} />
+          ))}
         </div>
       </section>
 

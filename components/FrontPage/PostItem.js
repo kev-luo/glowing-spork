@@ -31,19 +31,21 @@ export default function PostItem(props) {
   return (
     <a
       href={`/posts/${post.id}`}
-      className="py-8 flex flex-wrap md:flex-nowrap transition duration-300 transform sm:hover:translate-x-4 sm:hover:bg-blue-gray-50"
+      className="py-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap transition duration-300 transform sm:hover:translate-x-4 sm:hover:bg-blue-gray-50 "
     >
       <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
         <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
-        <span className="mt- text-gray-500 text-sm">
-          {returnDate(post.createdAt)}
+        <span className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+          <time dateTime={post.createdAt}>{returnDate(post.createdAt)}</time>
         </span>
       </div>
       <div className="md:flex-grow">
-        <h2 className="text-2xl font-medium text-gray-900 title-font mb-1">
+        <h2 className="text-2xl font-bold leading-8 tracking-tight">
           {post.title}
         </h2>
-        <p className="text-gray-500">{post.username}</p>
+        <p className="prose text-gray-500 max-w-none dark:text-gray-400">
+          {post.username}
+        </p>
       </div>
     </a>
   );
