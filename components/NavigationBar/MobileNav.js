@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CustomLink from "../CustomLink";
+import NavItem from "./NavItem";
 import navLinkTitles from "../../data/navLinkTitles";
 
 export default function MobileNav() {
@@ -60,13 +61,13 @@ export default function MobileNav() {
         <nav className="fixed h-full mt-8">
           {navLinkTitles.map((link) => (
             <div key={link.title} className="px-12 py-4">
-              <CustomLink
+              <NavItem
                 href={link.href}
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+                title={link.title}
                 onClick={onToggleNav}
               >
                 {link.title}
-              </CustomLink>
+              </NavItem>
             </div>
           ))}
         </nav>

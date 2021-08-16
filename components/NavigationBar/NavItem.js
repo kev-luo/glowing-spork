@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 // single navbar item
 export default function NavItem(props) {
-  const { href, title } = props;
+  const { href, title, ...rest } = props;
   const router = useRouter();
   const isActive = router.pathname === href;
   return (
@@ -11,9 +11,10 @@ export default function NavItem(props) {
       aria-label={title}
       title={title}
       href={href}
-      className={`p-1 sm:p-4 dark:text-gray-100 font-small tracking-wide text-gray-900 transition-colors duration-200 uppercase hover:text-purple-400 ${
+      className={`p-1 sm:p-4 dark:text-gray-100 font-small font-bold  tracking-widest text-gray-900 transition-colors duration-200 uppercase hover:text-purple-400 ${
         isActive ? "text-purple-400 dark:text-purple-400 " : ""
       } `}
+      {...rest}
     >
       {title}
     </CustomLink>
