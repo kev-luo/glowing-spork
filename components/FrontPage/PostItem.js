@@ -33,7 +33,7 @@ export default function PostItem(props) {
       href={`/posts/${post.id}`}
       className="py-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap transition duration-300 transform sm:hover:translate-x-4 sm:hover:bg-blue-gray-50 "
     >
-      <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+      <div className="md:w-64 flex-shrink-0 flex items-center">
         <PostImage label={post.postEmojiTitle} emoji={post.postEmoji} />
         <span className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
           <time dateTime={post.createdAt}>{returnDate(post.createdAt)}</time>

@@ -1,14 +1,12 @@
-import { useState } from "react";
 import CustomLink from "../CustomLink";
 import Logo from "../SVG/Logo";
 import ThemeToggle from "../ThemeToggle";
-import MobileNav from "../MobileNav";
+import MobileNav from "./MobileNav";
 import navLinkTitles from "../../data/navLinkTitles";
 import { siteMetadata } from "../../data/siteMetadata";
 import NavItem from "./NavItem";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <header className="flex items-center justify-between py-10">
       <div>
@@ -28,7 +26,7 @@ export default function Navbar() {
         </CustomLink>
       </div>
       <div className="flex items-center text-base leading-5">
-        <div className="hidden sm:block">
+        <div className="hidden md:block">
           {navLinkTitles.map((link, index) => (
             <NavItem key={index} href={link.href} title={link.title} />
           ))}
