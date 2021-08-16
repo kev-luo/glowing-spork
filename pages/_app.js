@@ -2,8 +2,8 @@ import "../configureAmplify";
 import { useState, useEffect } from "react";
 import { Auth, Hub } from "aws-amplify";
 
-import Navbar from "../components/NavigationBar/Navbar";
-import { ThemeProvider } from "../components/themeContext";
+import Wrapper from "../components/Wrapper";
+import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -29,14 +29,11 @@ function MyApp({ Component, pageProps }) {
     }
   }
   return (
-    <>
-      <ThemeProvider>
-        <Navbar />
-        <div>
-          <Component {...pageProps} />
-        </div>
-      </ThemeProvider>
-    </>
+    <ThemeProvider attribute="class">
+      <Wrapper>
+        <Component {...pageProps} />
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 

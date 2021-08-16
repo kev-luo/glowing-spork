@@ -1,24 +1,21 @@
-import React from "react";
-import Link from "next/link";
+import CustomLink from "../CustomLink";
 import { useRouter } from "next/router";
 
 // single navbar item
 export default function NavItem(props) {
-  const { children, to } = props;
+  const { href, title } = props;
   const router = useRouter();
-  const isActive = router.pathname === to;
+  const isActive = router.pathname === href;
   return (
-    <a
-      aria-label="Home"
-      title="Home"
-      href={to}
-      className={`${
-        isActive ? "text-purple-400" : ""
-      } font-small tracking-wide text-gray-100 transition-colors duration-200 uppercase hover:text-purple-400`}
+    <CustomLink
+      aria-label={title}
+      title={title}
+      href={href}
+      className={`p-1 sm:p-4 dark:text-gray-100 font-small tracking-wide text-gray-900 transition-colors duration-200 uppercase hover:text-purple-400 ${
+        isActive ? "text-purple-400 dark:text-purple-400 " : ""
+      } `}
     >
-      <div className="flex items-center relative cursor-pointer whitespace-nowrap">
-        {children}
-      </div>
-    </a>
+      {title}
+    </CustomLink>
   );
 }
