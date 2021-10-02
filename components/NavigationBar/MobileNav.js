@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CustomLink from "../CustomLink";
 import NavItem from "./NavItem";
 import navLinkTitles from "../../data/navLinkTitles";
 

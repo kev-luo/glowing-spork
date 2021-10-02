@@ -6,7 +6,7 @@ export default function CustomLink({ href, ...rest }) {
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
+      <Link href={href} passHref>
         <a {...rest} />
       </Link>
     );

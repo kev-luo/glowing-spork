@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^1.2.4",
+    "@tailwindcss/typography": "^0.4.1",
     "aws-amplify": "^4.1.1",
     "easymde": "^2.15.0",
     "next": "11.0.0",
